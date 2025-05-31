@@ -1,0 +1,10 @@
+In this file i will share the flow of execution of the  project. <br>
+1. first save the copy of the repo to your personal system. <br>
+2. now using the dataCollection.py file collect the data using the camera of different real and fake faces. the captured faces are then stored in a folder called Dataset <br>
+Note : change '1' for real and '0' for fake faces. <br>
+3. now use the SplitData.py file for spliting of the dataset. into training set, testing set and validation set. <br>
+4. After the creating the train, test, validation sets create a data.yaml file for training the data. <br>
+5. now use the train.py to train the model on the training data. <br>
+6. after the training the model then a best.pt is created in the models folder. copy that and paste it in the main.py file.<br>
+7. click on execute to reun the main.py file. <br>
+8. the camera will open and detect the face and classify it as real or fake.
