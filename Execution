@@ -1,10 +1,128 @@
-In this file i will share the flow of execution of the  project. <br>
-1. first save the copy of the repo to your personal system. <br>
-2. now using the dataCollection.py file collect the data using the camera of different real and fake faces. the captured faces are then stored in a folder called Dataset <br>
-Note : change '1' for real and '0' for fake faces. <br>
-3. now use the SplitData.py file for spliting of the dataset. into training set, testing set and validation set. <br>
-4. After the creating the train, test, validation sets create a data.yaml file for training the data. <br>
-5. now use the train.py to train the model on the training data. <br>
-6. after the training the model then a best.pt is created in the models folder. copy that and paste it in the main.py file.<br>
-7. click on execute to reun the main.py file. <br>
-8. the camera will open and detect the face and classify it as real or fake.
+# 🚀 Execution Guide: Face Liveness Detection using YOLOv8
+
+This document provides a step-by-step guide to execute the entire pipeline of the Face Liveness Detection project using YOLOv8.
+
+---
+
+## 📋 Steps to Execute the Project
+
+### 1. 📥 Clone or Download the Repository
+
+Save a copy of this repository to your local system.
+
+```bash
+git clone https://github.com/<your-username>/face-liveness-detection-yolov8.git
+cd face-liveness-detection-yolov8
+```
+
+---
+
+### 2. 🎥 Collect Face Data
+
+Run the `dataCollection.py` script to capture real and fake face images using your webcam.
+
+```bash
+python dataCollection.py
+```
+
+- Images will be saved in the `Dataset/` folder.
+- Label faces as:
+  - `1` for Real Faces
+  - `0` for Fake Faces
+
+📝 **Note**: Ensure good lighting and multiple samples for better model accuracy.
+
+---
+
+### 3. 🔀 Split the Dataset
+
+Use `SplitData.py` to split the collected dataset into **Training**, **Validation**, and **Testing** sets.
+
+```bash
+python SplitData.py
+```
+
+This will organize your `Dataset/` into appropriate folders.
+
+---
+
+### 4. 📝 Create `data.yaml`
+
+Manually create a `data.yaml` file in the root directory with the following content:
+
+```yaml
+train: Dataset/images/train
+val: Dataset/images/val
+test: Dataset/images/test
+
+nc: 2
+names: ['fake', 'real']
+```
+
+- `nc`: number of classes
+- `names`: class labels
+
+---
+
+### 5. 🏋️ Train the YOLOv8 Model
+
+Run the `train.py` script to train the model using the YOLOv8 architecture.
+
+```bash
+python train.py
+```
+
+After successful training, a `best.pt` model file will be generated in:
+
+```
+runs/train/exp/weights/best.pt
+```
+
+---
+
+### 6. 📦 Move Trained Weights
+
+Copy the `best.pt` file to your main working directory.
+
+```bash
+cp runs/train/exp/weights/best.pt .
+```
+
+Make sure `main.py` loads this model:
+
+```python
+model = YOLO("best.pt")
+```
+
+---
+
+### 7. 🎯 Run Real-Time Detection
+
+Execute `main.py` to launch the webcam and begin real-time face liveness classification.
+
+```bash
+python main.py
+```
+
+- The system will detect a face and classify it as **Real** or **Fake** on the screen.
+- Press `q` to exit the webcam window.
+
+---
+
+## ✅ Summary
+
+| Step | Script           | Purpose                                  |
+|------|------------------|------------------------------------------|
+| 1    | `dataCollection.py` | Collect real/fake face images           |
+| 2    | `SplitData.py`      | Split dataset into train/val/test       |
+| 3    | `data.yaml`         | Define dataset and class info for YOLO  |
+| 4    | `train.py`          | Train YOLOv8 model                      |
+| 5    | `main.py`           | Real-time face liveness detection       |
+
+---
+
+## 👤 Author
+
+**Ravuri Jeetendra**  
+*Face Liveness Detection using YOLOv8 for real-time authentication and security*
+
