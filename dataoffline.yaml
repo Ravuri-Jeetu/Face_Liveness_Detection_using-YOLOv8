@@ -1,7 +1,0 @@
-path: C:\Users\ravur\PERSONAL\Desktop\BVRIT-COLLEGE\minor project\face_liveness_detection\venv\Dataset\SplitData
-train: train\images
-val: val\images
-test: test\images
-
-nc: 2
-names: ['fake', 'real']
