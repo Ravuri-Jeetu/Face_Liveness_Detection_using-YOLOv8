@@ -40,7 +40,7 @@ pip install -r requirements.txt
 <h2 style="color:#14213D;">💡 Usage</h2>
 
 ```python
-python main.py --input your_video.mp4
+python main.py 
 ```
 
 <hr style="border-top:2px solid #14213D;">
